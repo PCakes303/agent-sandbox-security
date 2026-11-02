@@ -97,6 +97,8 @@ class SandboxPolicyTests(unittest.TestCase):
             lambda p: p["execution"].update({"allow_execution": True}),
             lambda p: p["limits"].update({"cpu_millis": 60001}),
             lambda p: p["filesystem"].update({"read_paths": ["/app/../etc"]}),
+            lambda p: p["filesystem"].update({"read_paths": ["/bad\x00path"]}),
+            lambda p: p["filesystem"].update({"read_only_root": False}),
             lambda p: p["filesystem"].update({"read_paths": ["/x"] * 65}),
         ):
             candidate = json.loads(json.dumps(valid))
