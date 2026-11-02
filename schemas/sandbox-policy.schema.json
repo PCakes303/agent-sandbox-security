@@ -19,7 +19,8 @@
     "profile_id": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 128
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
     },
     "limits": {
       "type": "object",
@@ -73,17 +74,31 @@
         },
         "read_paths": {
           "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
           "items": {
-            "type": "string"
-          },
-          "uniqueItems": true
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024,
+            "pattern": "^/",
+            "not": {
+              "pattern": "(^|/)\\.\\.(?:/|$)"
+            }
+          }
         },
         "write_paths": {
           "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
           "items": {
-            "type": "string"
-          },
-          "uniqueItems": true
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024,
+            "pattern": "^/",
+            "not": {
+              "pattern": "(^|/)\\.\\.(?:/|$)"
+            }
+          }
         }
       }
     },
@@ -100,10 +115,14 @@
         },
         "egress_allowlist": {
           "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
           "items": {
-            "type": "string"
-          },
-          "uniqueItems": true
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255,
+            "pattern": "^[^\\s\\u0000]+$"
+          }
         }
       }
     },
@@ -119,7 +138,7 @@
       ],
       "properties": {
         "allow_execution": {
-          "type": "boolean"
+          "const": false
         },
         "require_identity": {
           "const": true
