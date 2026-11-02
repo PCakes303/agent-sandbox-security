@@ -1,0 +1,14 @@
+{
+  "compatibility_version": "1.0.0",
+  "python": ">=3.10",
+  "schema_draft": "2020-12",
+  "integrations": {
+    "identity_trust": "contract-only",
+    "policy_engine": "contract-only",
+    "audit_provenance": "contract-only",
+    "secure_supply_chain": "contract-only",
+    "emergency_control": "contract-only",
+    "compliance_governance": "contract-only"
+  },
+  "runtime_backend": null
+}
