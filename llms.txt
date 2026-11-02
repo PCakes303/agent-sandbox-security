@@ -1,0 +1,7 @@
+# Agent Sandbox Security
+
+Purpose: experimental sandbox admission contract and fail-closed policy validator.
+Maturity: experimental; not an OS sandbox and does not execute untrusted code.
+Core files: README.md, manifest.json, capabilities.json, compatibility.json, docs/CONTRACT.md, docs/THREAT_MODEL.md, schemas/sandbox-policy.schema.json, tools/sandbox_policy.py.
+Dependencies: identity-trust, policy-engine, audit-provenance, secure-supply-chain, emergency-control, compliance-governance.
+Safety: privileged execution is prohibited until a verified isolation backend and independent emergency-stop enforcement are integrated.
