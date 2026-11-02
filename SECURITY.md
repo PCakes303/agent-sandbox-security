@@ -1,5 +1,14 @@
-# Security policy
+# Security Policy
 
-Do not report exploitable vulnerabilities in public issues. Use GitHub's private vulnerability reporting where available.
+This repository is an experimental sandbox admission-policy contract and reference validator. It is not an operating-system sandbox and must not be used as a security boundary for untrusted workloads.
 
-This repository is experimental and does not provide a production sandbox. Do not submit real secrets, personal data, exploit payloads targeting third parties, or confidential incident evidence. Report suspected bypasses of default-deny, emergency-stop, revocation, or resource-boundary controls privately.
+## Reporting
+
+Do not publish exploitable vulnerability details in public issues. Use GitHub private vulnerability reporting or a private security advisory only if enabled for this repository. No dedicated private reporting address is published here; if GitHub private reporting is unavailable, the owner must configure an approved private reporting channel before production use. Do not include credentials, secrets, personal data, or confidential incident evidence in public channels.
+
+## Security expectations
+
+- Treat all policy inputs and workload metadata as untrusted.
+- Preserve default-deny behavior and the unconditional non-execution guarantee of this reference implementation.
+- Do not claim CPU, memory, filesystem, network, syscall, tenant, or process isolation from policy validation alone.
+- Any future runtime backend requires independent security review and adversarial conformance tests.
