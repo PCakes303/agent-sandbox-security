@@ -57,8 +57,8 @@ class SandboxPolicyTests(unittest.TestCase):
 
     def test_escaped_braces_and_brackets_inside_strings_do_not_count_as_depth(self):
         value = policy()
-        value["profile_id"] = "safe-{[text]}"
-        self.assertEqual(load_policy(json.dumps(value))["profile_id"], "safe-{[text]}")
+        value["network"]["egress_allowlist"] = ['host.example/{[text]}?q="value"']
+        self.assertEqual(load_policy(json.dumps(value))["network"]["egress_allowlist"], ['host.example/{[text]}?q="value"'])
 
     def test_filesystem_path_count_and_length_are_bounded(self):
         p = policy()
