@@ -70,7 +70,7 @@
       ],
       "properties": {
         "read_only_root": {
-          "type": "boolean"
+          "const": true
         },
         "read_paths": {
           "type": "array",
@@ -82,7 +82,14 @@
             "maxLength": 1024,
             "pattern": "^/",
             "not": {
-              "pattern": "(^|/)\\.\\.(?:/|$)"
+              "anyOf": [
+                {
+                  "pattern": "(^|/)\\.\\.(?:/|$)"
+                },
+                {
+                  "pattern": "\\u0000"
+                }
+              ]
             }
           }
         },
@@ -96,7 +103,14 @@
             "maxLength": 1024,
             "pattern": "^/",
             "not": {
-              "pattern": "(^|/)\\.\\.(?:/|$)"
+              "anyOf": [
+                {
+                  "pattern": "(^|/)\\.\\.(?:/|$)"
+                },
+                {
+                  "pattern": "\\u0000"
+                }
+              ]
             }
           }
         }
