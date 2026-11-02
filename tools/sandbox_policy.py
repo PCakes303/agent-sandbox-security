@@ -1,6 +1,7 @@
 """Fail-closed sandbox policy validator; deliberately does not execute workloads."""
 from __future__ import annotations
 import json
+import re
 from pathlib import PurePosixPath
 
 MAX_POLICY_BYTES = 1_048_576
@@ -9,6 +10,7 @@ MAX_PATHS = 64
 MAX_PATH_LENGTH = 1024
 MAX_EGRESS_ENTRIES = 64
 MAX_EGRESS_LENGTH = 255
+_PROFILE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
 
 class PolicyError(ValueError):
     pass
@@ -86,7 +88,7 @@ def validate_policy(p: dict) -> dict:
     required = {"policy_version","profile_id","limits","filesystem","network","execution"}
     if set(p) != required or p.get("policy_version") != "1.0":
         raise PolicyError("unknown, missing, or unsupported policy fields")
-    if not isinstance(p["profile_id"], str) or not p["profile_id"] or len(p["profile_id"]) > 128 or any(ch.isspace() for ch in p["profile_id"]):
+    if not isinstance(p["profile_id"], str) or not _PROFILE_ID.fullmatch(p["profile_id"]):
         raise PolicyError("invalid profile_id")
     limits = p["limits"]
     if not isinstance(limits, dict) or set(limits) != {"cpu_millis","memory_bytes","wall_time_seconds","processes","output_bytes"}:
