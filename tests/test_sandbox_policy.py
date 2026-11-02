@@ -37,6 +37,9 @@ class SandboxPolicyTests(unittest.TestCase):
         self.assertEqual(evaluate_admission(authenticated=True,policy_allowed=True,artifact_verified=True,revocation_clear=True,stop_state_valid=True,stop_active=True,backend_enforced=True)[0],False)
     def test_backend_missing_denies(self):
         self.assertEqual(evaluate_admission(authenticated=True,policy_allowed=True,artifact_verified=True,revocation_clear=True,stop_state_valid=True,stop_active=False,backend_enforced=False)[0],False)
+    def test_non_boolean_admission_evidence_denies(self):
+        self.assertFalse(evaluate_admission(authenticated=1,policy_allowed=True,artifact_verified=True,revocation_clear=True,stop_state_valid=True,stop_active=False,backend_enforced=True)[0])
+
     def test_all_checks_still_non_executing(self):
         allowed, reason=evaluate_admission(authenticated=True,policy_allowed=True,artifact_verified=True,revocation_clear=True,stop_state_valid=True,stop_active=False,backend_enforced=True)
         self.assertFalse(allowed); self.assertEqual(reason,"deny:reference-implementation-never-executes")
