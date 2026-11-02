@@ -1,0 +1,23 @@
+{
+  "capabilities": [
+    {
+      "id": "sandbox.policy.validate",
+      "status": "experimental",
+      "description": "Validate a declarative sandbox policy and reject unsafe or incomplete constraints."
+    },
+    {
+      "id": "sandbox.admission.evaluate",
+      "status": "experimental",
+      "description": "Evaluate admission prerequisites using externally supplied authenticated identity, policy decision, revocation and emergency-stop state."
+    }
+  ],
+  "non_capabilities": [
+    "operating-system-isolation",
+    "container-or-namespace-creation",
+    "arbitrary-code-execution",
+    "network-enforcement",
+    "filesystem-enforcement",
+    "credential-management",
+    "production-policy-enforcement"
+  ]
+}
