@@ -1,19 +1,113 @@
 {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/PCakes303/agent-sandbox-security/blob/main/manifest.json",
   "manifest_version": "1.0.0",
   "id": "sandbox-security",
   "name": "agent-sandbox-security",
-  "version": "0.1.0",
+  "visibility": "public",
   "maturity": "experimental",
-  "role": "Sandbox admission policy contract and fail-closed reference validator; no OS isolation or workload execution.",
-  "dependencies": [
-    "identity-trust",
-    "policy-engine",
-    "audit-provenance",
-    "secure-supply-chain",
-    "emergency-control",
-    "compliance-governance"
+  "summary": "Experimental sandbox admission policy contract and fail-closed reference validator; no OS isolation or workload execution.",
+  "license": {
+    "expression": null,
+    "status": "pending-review",
+    "notes": "Repository-specific license selection remains pending portfolio review. No license is asserted."
+  },
+  "interfaces": [
+    {
+      "name": "sandbox-policy-v1",
+      "version": "1.0.0",
+      "kind": "schema",
+      "stability": "experimental"
+    },
+    {
+      "name": "sandbox-admission-validator",
+      "version": "0.1.0",
+      "kind": "cli",
+      "stability": "experimental"
+    }
   ],
-  "entrypoint": "tools/sandbox_policy.py",
-  "license_status": "pending-portfolio-review",
-  "execution_authority": false
+  "dependencies": [
+    {
+      "id": "identity-trust",
+      "constraint": "Authenticated principal and workload identity context; version TBD",
+      "kind": "contract"
+    },
+    {
+      "id": "policy-engine",
+      "constraint": "Fresh default-deny decision and enforcement contract; version TBD",
+      "kind": "contract"
+    },
+    {
+      "id": "audit-provenance",
+      "constraint": "Structured security event and evidence contract; version TBD",
+      "kind": "contract"
+    },
+    {
+      "id": "secure-supply-chain",
+      "constraint": "Artifact digest, publisher signature and provenance verification; version TBD",
+      "kind": "contract"
+    },
+    {
+      "id": "emergency-control",
+      "constraint": "Authenticated stop state, monotonic epoch, revocation and resume authority; version TBD",
+      "kind": "contract"
+    },
+    {
+      "id": "compliance-governance",
+      "constraint": "Deployment-specific obligations, control mapping and evidence; version TBD",
+      "kind": "contract"
+    }
+  ],
+  "security": {
+    "threat_model": "docs/THREAT_MODEL.md",
+    "secrets_in_repository": false,
+    "data_classification": "public",
+    "security_contact": null
+  },
+  "repository_url": "https://github.com/PCakes303/agent-sandbox-security",
+  "default_branch": "main",
+  "compatibility": [
+    {
+      "with": "identity-trust",
+      "range": "*",
+      "tested": false
+    },
+    {
+      "with": "policy-engine",
+      "range": "*",
+      "tested": false
+    },
+    {
+      "with": "audit-provenance",
+      "range": "*",
+      "tested": false
+    },
+    {
+      "with": "secure-supply-chain",
+      "range": "*",
+      "tested": false
+    },
+    {
+      "with": "emergency-control",
+      "range": "*",
+      "tested": false
+    },
+    {
+      "with": "compliance-governance",
+      "range": "*",
+      "tested": false
+    }
+  ],
+  "evidence": [
+    {
+      "claim": "Bounded policy parsing and fail-closed admission prerequisites are covered by schema-parity regression tests.",
+      "kind": "test",
+      "location": "tests/test_sandbox_policy.py"
+    },
+    {
+      "claim": "Reference implementation unconditionally denies actual workload execution.",
+      "kind": "test",
+      "location": "tools/sandbox_policy.py"
+    }
+  ]
 }
