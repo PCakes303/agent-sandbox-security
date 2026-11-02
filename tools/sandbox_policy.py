@@ -72,13 +72,13 @@ def validate_policy(p: dict) -> dict:
 
 def evaluate_admission(*, authenticated: bool, policy_allowed: bool, artifact_verified: bool, revocation_clear: bool, stop_state_valid: bool, stop_active: bool, backend_enforced: bool) -> tuple[bool, str]:
     checks = {
-        "identity": authenticated,
-        "policy": policy_allowed,
-        "artifact": artifact_verified,
-        "revocation": revocation_clear,
-        "stop-state": stop_state_valid,
-        "stop-inactive": not stop_active,
-        "isolation-backend": backend_enforced,
+        "identity": authenticated is True,
+        "policy": policy_allowed is True,
+        "artifact": artifact_verified is True,
+        "revocation": revocation_clear is True,
+        "stop-state": stop_state_valid is True,
+        "stop-inactive": stop_active is False,
+        "isolation-backend": backend_enforced is True,
     }
     for name, value in checks.items():
         if value is not True:
