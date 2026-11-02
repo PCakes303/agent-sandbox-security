@@ -1,0 +1,19 @@
+{
+  "manifest_version": "1.0.0",
+  "id": "sandbox-security",
+  "name": "agent-sandbox-security",
+  "version": "0.1.0",
+  "maturity": "experimental",
+  "role": "Sandbox admission policy contract and fail-closed reference validator; no OS isolation or workload execution.",
+  "dependencies": [
+    "identity-trust",
+    "policy-engine",
+    "audit-provenance",
+    "secure-supply-chain",
+    "emergency-control",
+    "compliance-governance"
+  ],
+  "entrypoint": "tools/sandbox_policy.py",
+  "license_status": "pending-portfolio-review",
+  "execution_authority": false
+}
