@@ -22,7 +22,7 @@
     {
       "name": "sandbox-admission-validator",
       "version": "0.1.0",
-      "kind": "cli",
+      "kind": "library",
       "stability": "experimental"
     }
   ],
