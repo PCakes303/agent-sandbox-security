@@ -15,4 +15,4 @@ Experimental contracts and reference validation for constrained agent/tool execu
 ## Quick start
 Run `python -m unittest discover -s tests -v` with Python 3.10+.
 
-See docs/CONTRACT.md and docs/THREAT_MODEL.md. License selection remains pending portfolio review; no license is asserted.
+This repository applies a scoped mixed-license policy: original source code and machine-readable contracts are licensed under Apache-2.0; original human-readable documentation is licensed under CC BY 4.0. Third-party material retains upstream terms. Datasets, evidence, fixtures, sample payloads, media, and material with uncertain provenance are not blanket-licensed and require separate review. See [LICENSE.md](LICENSE.md).
