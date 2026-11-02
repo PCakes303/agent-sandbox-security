@@ -13,6 +13,13 @@ Experimental contracts and reference validation for constrained agent/tool execu
 - Untrusted workloads are never run by this repository's validator.
 
 ## Quick start
-Run `python -m unittest discover -s tests -v` with Python 3.10+.
+Use Python 3.10 or newer. Install the pinned development/test dependency, then run the regression suite:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m unittest discover -s tests -v
+```
+
+The test runner uses Python's standard-library `unittest`; schema-parity checks additionally require the pinned `jsonschema` dependency.
 
 This repository applies a scoped mixed-license policy: original source code and machine-readable contracts are licensed under Apache-2.0; original human-readable documentation is licensed under CC BY 4.0. Third-party material retains upstream terms. Datasets, evidence, fixtures, sample payloads, media, and material with uncertain provenance are not blanket-licensed and require separate review. See [LICENSE.md](LICENSE.md).
