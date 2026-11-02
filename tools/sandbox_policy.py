@@ -37,7 +37,7 @@ def _check_raw_json_bounds(raw: str) -> None:
         if in_string:
             if escaped:
                 escaped = False
-            elif char == "\\\\":
+            elif char == "\\":
                 escaped = True
             elif char == '"':
                 in_string = False
