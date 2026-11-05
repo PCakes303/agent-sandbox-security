@@ -9,8 +9,8 @@
   "summary": "Experimental sandbox admission policy contract and fail-closed reference validator; no OS isolation or workload execution.",
   "license": {
     "expression": null,
-    "status": "scoped-mixed-license",
-    "notes": "Scoped mixed-license policy: original source code, tests, build scripts, CI workflows, software interfaces, machine-readable schemas/specifications/configuration are Apache-2.0; original human-readable documentation and README prose are CC-BY-4.0. Third-party material retains upstream terms. Data, datasets, evidence, fixtures, sample payloads, media, and provenance-uncertain material are not blanket-licensed and require item-specific rights review. See LICENSE.md."
+    "status": "pending-review",
+    "notes": "The portfolio has selected a scoped mixed-license model. Repository-level file provenance, third-party notices and artifact-category applicability remain under review; no blanket license is asserted for datasets, evidence, fixtures, media or material with uncertain provenance. See LICENSE.md."
   },
   "interfaces": [
     {
